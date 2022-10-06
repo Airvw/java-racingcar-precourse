@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.ValidationUtils.ERROR_MESSAGE;
-import static racingcar.ValidationUtils.makeSplit;
+import static racingcar.ValidationUtils.makeSplitedArray;
 
 public class ValidationUtilsTest {
 
@@ -24,16 +24,16 @@ public class ValidationUtilsTest {
     @DisplayName("자동차 이름 입력값 검증 성공 테스트")
     void inputCarNamesTest(){
         inputCarNames = "pobi,woni,java";
-        String[] carNames = makeSplit(inputCarNames);
+        String[] carNames = makeSplitedArray(inputCarNames);
         assertThat(carNames.length).isEqualTo(3);
-        assertThat(validationUtils.validCarNames(carNames)).isTrue();
+        assertThat(validationUtils.validateCarNames(carNames).length).isEqualTo(carNames.length);
     }
 
     @Test
     @DisplayName("자동차 이름 입력값 검증 실패 테스트")
     void inputCarNamesErrorTest(){
         inputCarNames = "pobi,woni,javajigi";
-        assertThatThrownBy(() -> validationUtils.validCarNames(makeSplit(inputCarNames))).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> validationUtils.validateCarNames(makeSplitedArray(inputCarNames))).isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining(ERROR_MESSAGE);
     }
 
