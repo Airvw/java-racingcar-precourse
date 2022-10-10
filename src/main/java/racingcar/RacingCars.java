@@ -2,10 +2,13 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCars {
 
+    private ResultView resultView = new ResultView();
     private List<RacingCar> racingCarList;
+    private int maxPosition = 0;
     public RacingCars(String[] carNamesArray) {
         racingCarList = makeRacingCarList(carNamesArray);
     }
@@ -16,7 +19,29 @@ public class RacingCars {
         return result;
     }
 
+    public void race(){
+        for(RacingCar racingCar : racingCarList){
+            racingCar.checkCarAction(new RandomAction().getRacingCarAction());
+            getMaxCarPosition(racingCar.getRacingCarPosition());
+            resultView.printCarPosition(racingCar);
+        }
+    }
+
+    private void getMaxCarPosition(int racingCarPosition) {
+        maxPosition = Math.max(maxPosition, racingCarPosition);
+    }
+
+    public List<RacingCar> getWinnerCar(){
+        return racingCarList.stream()
+                .filter(racingCar -> racingCar.getRacingCarPosition() == maxPosition)
+                .collect(Collectors.toList());
+    }
+
     public List<RacingCar> getRacingCarList() {
         return racingCarList;
+    }
+
+    public int getMaxPosition() {
+        return maxPosition;
     }
 }
