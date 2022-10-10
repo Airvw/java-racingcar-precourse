@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCars {
-
-    private ResultView resultView = new ResultView();
     private List<RacingCar> racingCarList;
     private int maxPosition = 0;
     public RacingCars(String[] carNamesArray) {
@@ -23,7 +21,6 @@ public class RacingCars {
         for(RacingCar racingCar : racingCarList){
             racingCar.checkCarAction(new RandomAction().getRacingCarAction());
             getMaxCarPosition(racingCar.getRacingCarPosition());
-            resultView.printCarPosition(racingCar);
         }
     }
 
@@ -39,9 +36,5 @@ public class RacingCars {
 
     public List<RacingCar> getRacingCarList() {
         return racingCarList;
-    }
-
-    public int getMaxPosition() {
-        return maxPosition;
     }
 }

@@ -9,6 +9,7 @@ public class Application {
         RacingCars racingCars = new RacingCars(carNames);
         while(tryCnt-- > 0){
             racingCars.race();
+            resultView.printCarPosition(racingCars.getRacingCarList());
         }
         resultView.printWinner(racingCars.getWinnerCar());
     }

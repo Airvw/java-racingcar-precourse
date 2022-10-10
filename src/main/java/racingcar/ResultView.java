@@ -3,8 +3,9 @@ package racingcar;
 import java.util.List;
 
 public class ResultView {
-    public void printCarPosition(RacingCar racingCar){
-        System.out.println(racingCar.getRacingCarName() + " : " + printDash(racingCar.getRacingCarPosition()));
+    public void printCarPosition(List<RacingCar> racingCarList){
+        racingCarList
+                .forEach(racingCar -> System.out.println(racingCar.getRacingCarName() + " : " + printDash(racingCar.getRacingCarPosition())));
     }
 
     private String printDash(int carPosition){
