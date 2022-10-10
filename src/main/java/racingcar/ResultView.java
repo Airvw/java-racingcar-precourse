@@ -9,13 +9,13 @@ public class ResultView {
 
     private String printDash(int carPosition){
         StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < carPosition; i++) sb.append("-");
+        for(int i = 0; i < carPosition; i++) sb.append(MessageUtils.OUTPUT_DASH.getMessage());
         return sb.toString();
     }
 
     public void printWinner(List<RacingCar> racingCarList) {
         int n = racingCarList.size();
-        System.out.print("최종 우승자 : ");
+        System.out.print(MessageUtils.OUTPUT_WINNER.getMessage());
         for(int i = 0; i < n; i++){
             System.out.print(racingCarList.get(i).getRacingCarName());
             isLastWinner(i, n);
