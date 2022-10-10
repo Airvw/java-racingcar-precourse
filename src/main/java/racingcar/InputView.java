@@ -6,12 +6,10 @@ import static racingcar.ValidationUtils.makeSplitedArray;
 
 public class InputView {
 
-    ValidationUtils validationUtils = new ValidationUtils();
-
     public String[] inputCarNames(){
         System.out.println(MessageUtils.INPUT_CAR.getMessage());
         try {
-            return validationUtils.validateCarNames(makeSplitedArray(readLine()));
+            return ValidationUtils.validateCarNames(makeSplitedArray(readLine()));
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
             return inputCarNames();
@@ -21,7 +19,7 @@ public class InputView {
     public int inputTryCnt(){
         System.out.println(MessageUtils.INPUT_TRY.getMessage());
         try {
-            return validationUtils.isValidCnt(readLine());
+            return ValidationUtils.isValidCnt(readLine());
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
             return inputTryCnt();
