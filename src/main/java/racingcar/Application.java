@@ -7,10 +7,11 @@ public class Application {
         String[] carNames = inputView.inputCarNames();
         int tryCnt = inputView.inputTryCnt();
         RacingCars racingCars = new RacingCars(carNames);
+        int maxPosition = 0;
         while(tryCnt-- > 0){
-            racingCars.race();
+            maxPosition = racingCars.race();
             resultView.printCarPosition(racingCars.getRacingCarList());
         }
-        resultView.printWinner(racingCars.getWinnerCar());
+        resultView.printWinner(racingCars.getWinnerCar(maxPosition));
     }
 }

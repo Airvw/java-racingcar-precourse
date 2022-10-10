@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class RacingCars {
     private List<RacingCar> racingCarList;
-    private int maxPosition = 0;
+
     public RacingCars(String[] carNamesArray) {
         racingCarList = makeRacingCarList(carNamesArray);
     }
@@ -17,18 +17,16 @@ public class RacingCars {
         return result;
     }
 
-    public void race(){
+    public int race(){
+        int maxPostiion = 0;
         for(RacingCar racingCar : racingCarList){
             racingCar.checkCarAction(new RandomAction().getRacingCarAction());
-            getMaxCarPosition(racingCar.getRacingCarPosition());
+            maxPostiion = Math.max(racingCar.getRacingCarPosition(), maxPostiion);
         }
+        return maxPostiion;
     }
 
-    private void getMaxCarPosition(int racingCarPosition) {
-        maxPosition = Math.max(maxPosition, racingCarPosition);
-    }
-
-    public List<RacingCar> getWinnerCar(){
+    public List<RacingCar> getWinnerCar(int maxPosition){
         return racingCarList.stream()
                 .filter(racingCar -> racingCar.getRacingCarPosition() == maxPosition)
                 .collect(Collectors.toList());
