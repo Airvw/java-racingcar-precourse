@@ -17,4 +17,8 @@ public class RacingCar {
     public int getRacingCarPosition() {
         return racingCarPosition;
     }
+
+    public void checkCarAction(RacingCarAction action) {
+        if(action.isGo()) this.racingCarPosition += 1;
+    }
 }
