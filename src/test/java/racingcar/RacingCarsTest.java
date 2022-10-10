@@ -23,7 +23,7 @@ public class RacingCarsTest {
     @ParameterizedTest
     @DisplayName("검증된 입력값으로 List<RacingCar> 생성 테스트")
     @CsvSource(value = {"0:pobi:0", "1:woni:0"}, delimiter = ':')
-    void makeRacingCarList(int idx, String carName, int carPosition){
+    void makeRacingCarListTest(int idx, String carName, int carPosition){
         racingCars = new RacingCars(ValidationUtils.makeSplitedArray(carNames));
         racingCarList = racingCars.getRacingCarList();
         assertThat(racingCarList.get(idx).getRacingCarName()).isEqualTo(carName);
