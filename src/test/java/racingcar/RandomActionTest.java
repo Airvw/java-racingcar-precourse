@@ -20,8 +20,8 @@ public class RandomActionTest {
     @Test
     @DisplayName("랜덤 숫자 0~9 사이의 값 테스트")
     void makeRandomNumTest(){
-        assertThat(randomAction.getRandomNum()).isGreaterThanOrEqualTo(validationUtils.MIN_NUMBER);
-        assertThat(randomAction.getRandomNum()).isLessThanOrEqualTo(validationUtils.MAX_NUMBER);
+        assertThat(randomAction.generateRandomNum()).isGreaterThanOrEqualTo(validationUtils.MIN_NUMBER);
+        assertThat(randomAction.generateRandomNum()).isLessThanOrEqualTo(validationUtils.MAX_NUMBER);
     }
 
     @Test
@@ -29,7 +29,7 @@ public class RandomActionTest {
     void actionTest(){
         int goNum = 9;
         int stopNum = 0;
-        assertThat(randomAction.getCarAction(goNum)).isEqualTo(RacingCarAction.GO);
-        assertThat(randomAction.getCarAction(stopNum)).isEqualTo(RacingCarAction.STOP);
+        assertThat(randomAction.getRandomCarAction(goNum)).isEqualTo(RacingCarAction.GO);
+        assertThat(randomAction.getRandomCarAction(stopNum)).isEqualTo(RacingCarAction.STOP);
     }
 }
