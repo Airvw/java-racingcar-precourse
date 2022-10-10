@@ -6,27 +6,27 @@ public class RandomAction {
 
     private final int BOUNDARY_NUM = 4;
 
-    private int randomNum;
+    private RacingCarAction racingCarAction;
     private ValidationUtils validationUtils = new ValidationUtils();
 
     public RandomAction(){
-        randomNum = generateRandomNum();
+        this.racingCarAction = getRandomCarAction(generateRandomNum());
     }
 
-    private int generateRandomNum() {
-        int result = pickNumberInRange(validationUtils.MIN_NUMBER, validationUtils.MAX_NUMBER);
-        if(validationUtils.isValidNum(result)){
-            return result;
+    public int generateRandomNum() {
+        int randomNum = pickNumberInRange(validationUtils.MIN_NUMBER, validationUtils.MAX_NUMBER);
+        if(validationUtils.isValidNum(randomNum)){
+            return randomNum;
         }
         return generateRandomNum();
     }
 
-    public RacingCarAction getCarAction(int randomNum) {
+    public RacingCarAction getRandomCarAction(int randomNum) {
         if(randomNum < BOUNDARY_NUM) return RacingCarAction.STOP;
         return RacingCarAction.GO;
     }
 
-    public int getRandomNum() {
-        return randomNum;
+    public RacingCarAction getRacingCarAction() {
+        return racingCarAction;
     }
 }
